@@ -164,6 +164,11 @@ async fn serve_connection(
 ) {
     metrics::http_server::active_connections(&endpoint_name).inc();
 
+    println!("adding label");
+    let name = metrics::Label::Name("test".to_string());
+    metrics::http_server::test(name.clone()).inc();
+    println!("metric: {}", metrics::http_server::test(name).get());
+
     tracing::add_span_tags! { "client_addr" => client_addr.to_string() }
     log::add_fields! { "client_addr" => client_addr }
     log::info!("accepted client connection");

@@ -7,7 +7,7 @@ publish = false
 
 [dev-dependencies]
 anyhow = { workspace = true }
-foundations = { workspace = true }
+foundations = { workspace = true, features = ["metrics"] }
 futures-util = { workspace = true }
 hyper = { workspace = true }
 tokio = { workspace = true, features = ["full"]}
@@ -15,3 +15,6 @@ tokio = { workspace = true, features = ["full"]}
 [[example]]
 name = "http_server"
 path = "http_server/main.rs"
+
+[dependencies]
+serde.workspace = true
